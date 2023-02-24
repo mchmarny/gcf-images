@@ -76,4 +76,5 @@ jobs:
           --region=${{ inputs.region }} \
           --source=. \
           --entry-point=${{ inputs.entry_point }} \
+          --memory=512MB \
           --trigger-http
