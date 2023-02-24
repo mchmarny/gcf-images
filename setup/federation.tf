@@ -4,7 +4,8 @@
 locals {
   # List of roles that will be assigned to the GitHub federted user
   ci_roles = toset([
-    "roles/cloudfunctions.developer"
+    "roles/cloudfunctions.developer",
+    "roles/iam.serviceAccountUser",
   ])
 }
 
