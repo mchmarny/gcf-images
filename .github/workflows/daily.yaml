@@ -187,6 +187,8 @@ jobs:
       runtime: "dotnet6"
       entry_point: "HelloWorld.Function"
   
+  # The sample in repo doesn't deploy for dotnet3 so using local sample.
+  # Notice repo is not specified and the context is different.
   dotnet3:
     permissions:
       contents: write
@@ -194,8 +196,7 @@ jobs:
       id-token: write
     uses: ./.github/workflows/fn-deploy.yaml
     with:
-      repo: "https://github.com/GoogleCloudPlatform/dotnet-docs-samples.git"
-      context: "dotnet-docs-samples/functions/helloworld/HelloHttp/"
+      context: "src/dotnet3"
       name: "daily-dotnet3"
       runtime: "dotnet3"
       entry_point: "HelloHttp.Function"

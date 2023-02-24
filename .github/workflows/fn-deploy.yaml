@@ -3,7 +3,7 @@ on:
     inputs:
       repo:
         description: 'Fully qualified URI to the Git repo that will be cloned'
-        required: true
+        required: false
         type: string
       context:
         description: 'Dir to run the deploy from (default .)'
@@ -49,7 +49,8 @@ jobs:
       id-token: write
     steps:
 
-    - name: clone
+    - if: github.event.inputs.repo
+      name: clone
       run: |
         set -euo pipefail
         git clone ${{ inputs.repo }}
