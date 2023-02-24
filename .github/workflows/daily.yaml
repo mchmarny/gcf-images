@@ -1,16 +1,13 @@
-name: on_push
-
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+  schedule:
+    - cron: '0 */11 * * *'
 
 permissions:
   contents: read
 
+# Setting up the reusable deploy workflow as individual jobs 
+# allows each deployment to execute in parallel with minimal 
+# dependency on each other.
 jobs:
 
   # =================================================
@@ -67,7 +64,7 @@ jobs:
     with:
       repo: "https://github.com/GoogleCloudPlatform/python-docs-samples.git"
       context: "python-docs-samples/functions/helloworld/"
-      name: "daily-python311a"
+      name: "daily-python311"
       runtime: "python311"
       entry_point: "hello_get"
 
