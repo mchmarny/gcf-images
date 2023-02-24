@@ -54,3 +54,45 @@ jobs:
       name: "daily-nodejs14"
       runtime: "nodejs14"
       entry_point: "helloGET"
+
+  # =================================================
+  # python-docs-samples
+  # =================================================
+  python311:
+    permissions:
+      contents: write
+      actions: read
+      id-token: write
+    uses: ./.github/workflows/fn-deploy.yaml
+    with:
+      repo: "https://github.com/GoogleCloudPlatform/python-docs-samples.git"
+      context: "python-docs-samples/functions/helloworld/"
+      name: "daily-python311"
+      runtime: "python311"
+      entry_point: "hello_get"
+
+  python310:
+    permissions:
+      contents: write
+      actions: read
+      id-token: write
+    uses: ./.github/workflows/fn-deploy.yaml
+    with:
+      repo: "https://github.com/GoogleCloudPlatform/python-docs-samples.git"
+      context: "python-docs-samples/functions/helloworld/"
+      name: "daily-python310"
+      runtime: "python310"
+      entry_point: "hello_get"
+
+  python39:
+    permissions:
+      contents: write
+      actions: read
+      id-token: write
+    uses: ./.github/workflows/fn-deploy.yaml
+    with:
+      repo: "https://github.com/GoogleCloudPlatform/python-docs-samples.git"
+      context: "python-docs-samples/functions/helloworld/"
+      name: "daily-python39"
+      runtime: "python39"
+      entry_point: "hello_get"
