@@ -1,3 +1,5 @@
+VERSION    :=$(shell cat .version)
+
 all: help
 
 .PHONY: tag
