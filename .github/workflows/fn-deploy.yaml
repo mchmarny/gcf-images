@@ -58,7 +58,6 @@ jobs:
       name: Auth GCP
       uses: google-github-actions/auth@v1  # v1.0.0
       with:
-        token_format: "access_token"
         workload_identity_provider: ${{ inputs.provider }}
         service_account: ${{ inputs.user }}
 
