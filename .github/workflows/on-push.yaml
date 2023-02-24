@@ -67,7 +67,7 @@ jobs:
     with:
       repo: "https://github.com/GoogleCloudPlatform/python-docs-samples.git"
       context: "python-docs-samples/functions/helloworld/"
-      name: "daily-python311"
+      name: "daily-python311a"
       runtime: "python311"
       entry_point: "hello_get"
 
@@ -196,3 +196,74 @@ jobs:
       name: "daily-dotnet3"
       runtime: "dotnet3"
       entry_point: "HelloWorld.Function"
+
+  # =================================================
+  # ruby-docs-samples
+  # =================================================
+  ruby30:
+    permissions:
+      contents: write
+      actions: read
+      id-token: write
+    uses: ./.github/workflows/fn-deploy.yaml
+    with:
+      repo: "https://github.com/GoogleCloudPlatform/ruby-docs-samples.git"
+      context: "ruby-docs-samples/functions/helloworld/get/"
+      name: "daily-ruby30"
+      runtime: "ruby30"
+      entry_point: "hello_get"
+
+  ruby27:
+    permissions:
+      contents: write
+      actions: read
+      id-token: write
+    uses: ./.github/workflows/fn-deploy.yaml
+    with:
+      repo: "https://github.com/GoogleCloudPlatform/ruby-docs-samples.git"
+      context: "ruby-docs-samples/functions/helloworld/get/"
+      name: "daily-ruby27"
+      runtime: "ruby27"
+      entry_point: "hello_get"
+
+  ruby26:
+    permissions:
+      contents: write
+      actions: read
+      id-token: write
+    uses: ./.github/workflows/fn-deploy.yaml
+    with:
+      repo: "https://github.com/GoogleCloudPlatform/ruby-docs-samples.git"
+      context: "ruby-docs-samples/functions/helloworld/get/"
+      name: "daily-ruby26"
+      runtime: "ruby26"
+      entry_point: "hello_get"
+
+  # =================================================
+  # php-docs-samples
+  # =================================================
+  php81:
+    permissions:
+      contents: write
+      actions: read
+      id-token: write
+    uses: ./.github/workflows/fn-deploy.yaml
+    with:
+      repo: "https://github.com/GoogleCloudPlatform/php-docs-samples.git"
+      context: "php-docs-samples/functions/helloworld_get/"
+      name: "daily-php81"
+      runtime: "php81"
+      entry_point: "helloGet"
+
+  php74:
+    permissions:
+      contents: write
+      actions: read
+      id-token: write
+    uses: ./.github/workflows/fn-deploy.yaml
+    with:
+      repo: "https://github.com/GoogleCloudPlatform/php-docs-samples.git"
+      context: "php-docs-samples/functions/helloworld_get/"
+      name: "daily-php74"
+      runtime: "php74"
+      entry_point: "helloGet"
