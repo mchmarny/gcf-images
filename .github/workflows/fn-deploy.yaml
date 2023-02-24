@@ -37,6 +37,11 @@ on:
         required: false
         type: string
         default: 'gcftest-github-actions-user@cloudy-labz.iam.gserviceaccount.com'
+      memory:
+        description: 'Memory to allocate to this function (default 256MB)'
+        required: false
+        type: string
+        default: '256MB'
 
 permissions:
   contents: write
@@ -70,6 +75,8 @@ jobs:
     - name: deploy
       run: |
         set -euo pipefail
+        ls -al 
+        tree
         cd ${{ inputs.context }}
         gcloud functions deploy ${{ inputs.name }} \
           --gen2 \
@@ -77,5 +84,5 @@ jobs:
           --region=${{ inputs.region }} \
           --source=. \
           --entry-point=${{ inputs.entry_point }} \
-          --memory=512MB \
+          --memory=${{ inputs.memory }} \
           --trigger-http

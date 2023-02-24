@@ -157,6 +157,7 @@ jobs:
       name: "daily-java17"
       runtime: "java17"
       entry_point: "functions.HelloWorld"
+      memory: "512MB"
 
   java11:
     permissions:
@@ -170,6 +171,7 @@ jobs:
       name: "daily-java11"
       runtime: "java11"
       entry_point: "functions.HelloWorld"
+      memory: "512MB"
 
   # =================================================
   # dotnet-docs-samples
