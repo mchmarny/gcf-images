@@ -186,21 +186,19 @@ jobs:
       name: "daily-dotnet6"
       runtime: "dotnet6"
       entry_point: "HelloWorld.Function"
-
-  # That fails all the time, commented out not to have to deal with failure notifications
   
-  # dotnet3:
-  #   permissions:
-  #     contents: write
-  #     actions: read
-  #     id-token: write
-  #   uses: ./.github/workflows/fn-deploy.yaml
-  #   with:
-  #     repo: "https://github.com/GoogleCloudPlatform/dotnet-docs-samples.git"
-  #     context: "dotnet-docs-samples/functions/helloworld/HelloWorld/"
-  #     name: "daily-dotnet3"
-  #     runtime: "dotnet3"
-  #     entry_point: "HelloWorld.Function"
+  dotnet3:
+    permissions:
+      contents: write
+      actions: read
+      id-token: write
+    uses: ./.github/workflows/fn-deploy.yaml
+    with:
+      repo: "https://github.com/GoogleCloudPlatform/dotnet-docs-samples.git"
+      context: "dotnet-docs-samples/functions/helloworld/HelloHttp/"
+      name: "daily-dotnet3"
+      runtime: "dotnet3"
+      entry_point: "HelloHttp.Function"
 
   # =================================================
   # ruby-docs-samples
