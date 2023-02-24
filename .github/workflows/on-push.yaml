@@ -96,3 +96,45 @@ jobs:
       name: "daily-python39"
       runtime: "python39"
       entry_point: "hello_get"
+
+  # =================================================
+  # golang-samples
+  # =================================================
+  go120:
+    permissions:
+      contents: write
+      actions: read
+      id-token: write
+    uses: ./.github/workflows/fn-deploy.yaml
+    with:
+      repo: "https://github.com/GoogleCloudPlatform/golang-samples.git"
+      context: "golang-samples/functions/functionsv2/helloworld/"
+      name: "daily-go120"
+      runtime: "go120"
+      entry_point: "HelloGet"
+
+  go119:
+    permissions:
+      contents: write
+      actions: read
+      id-token: write
+    uses: ./.github/workflows/fn-deploy.yaml
+    with:
+      repo: "https://github.com/GoogleCloudPlatform/golang-samples.git"
+      context: "golang-samples/functions/functionsv2/helloworld/"
+      name: "daily-go119"
+      runtime: "go119"
+      entry_point: "HelloGet"
+
+  go118:
+    permissions:
+      contents: write
+      actions: read
+      id-token: write
+    uses: ./.github/workflows/fn-deploy.yaml
+    with:
+      repo: "https://github.com/GoogleCloudPlatform/golang-samples.git"
+      context: "golang-samples/functions/functionsv2/helloworld/"
+      name: "daily-go118"
+      runtime: "go118"
+      entry_point: "HelloGet"
