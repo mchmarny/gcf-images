@@ -5,6 +5,11 @@ on:
         description: 'Fully qualified URI to the Git repo that will be cloned'
         required: false
         type: string
+      checkout: 
+        description: 'Checkout the repo source code (default false)'
+        required: false
+        type: boolean
+        default: false
       context:
         description: 'Dir to run the deploy from (default .)'
         required: true
@@ -60,6 +65,10 @@ jobs:
         set -euo pipefail
         git clone ${{ inputs.repo }}
 
+    - if: inputs.checkout
+      name: checkout
+      uses: actions/checkout@v3
+
     - id: auth
       name: Auth GCP
       uses: google-github-actions/auth@v1  # v1.0.0
@@ -75,8 +84,6 @@ jobs:
     - name: deploy
       run: |
         set -euo pipefail
-        ls -al 
-        tree
         cd ${{ inputs.context }}
         gcloud functions deploy ${{ inputs.name }} \
           --gen2 \

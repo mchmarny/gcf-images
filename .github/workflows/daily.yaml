@@ -190,7 +190,7 @@ jobs:
       entry_point: "HelloWorld.Function"
   
   # The sample in repo doesn't deploy for dotnet3 so using local sample.
-  # Notice repo is not specified and the context is different.
+  # Notice repo is not specified, context is different, and checkout == true.
   dotnet3:
     permissions:
       contents: write
@@ -198,7 +198,8 @@ jobs:
       id-token: write
     uses: ./.github/workflows/fn-deploy.yaml
     with:
-      context: "./src/dotnet3"
+      context: "src/dotnet3"
+      checkout: true
       name: "daily-dotnet3"
       runtime: "dotnet3"
       entry_point: "HelloHttp.Function"
