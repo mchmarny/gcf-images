@@ -13,6 +13,9 @@ permissions:
 
 jobs:
 
+  # =================================================
+  # nodejs-docs-samples
+  # =================================================
   nodejs18:
     permissions:
       contents: write
@@ -24,4 +27,30 @@ jobs:
       context: "nodejs-docs-samples/functions/helloworld/helloworldGet/"
       name: "daily-nodejs18"
       runtime: "nodejs18"
+      entry_point: "helloGET"
+
+  nodejs16:
+    permissions:
+      contents: write
+      actions: read
+      id-token: write
+    uses: ./.github/workflows/fn-deploy.yaml
+    with:
+      repo: "https://github.com/GoogleCloudPlatform/nodejs-docs-samples.git"
+      context: "nodejs-docs-samples/functions/helloworld/helloworldGet/"
+      name: "daily-nodejs16"
+      runtime: "nodejs16"
+      entry_point: "helloGET"
+
+  nodejs14:
+    permissions:
+      contents: write
+      actions: read
+      id-token: write
+    uses: ./.github/workflows/fn-deploy.yaml
+    with:
+      repo: "https://github.com/GoogleCloudPlatform/nodejs-docs-samples.git"
+      context: "nodejs-docs-samples/functions/helloworld/helloworldGet/"
+      name: "daily-nodejs14"
+      runtime: "nodejs14"
       entry_point: "helloGET"
