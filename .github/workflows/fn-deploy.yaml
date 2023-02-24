@@ -1,0 +1,80 @@
+on:
+  workflow_call:
+    inputs:
+      repo:
+        description: 'Fully qualified URI to the Git repo that will be cloned'
+        required: true
+        type: string
+      context:
+        description: 'Dir to run the deploy from (default .)'
+        required: true
+        type: string
+        default: '.'
+      name:
+        description: 'Function name'
+        required: true
+        type: string
+      runtime:
+        description: 'GCF runtime to use for this function'
+        required: true
+        type: string
+      entry_point:
+        description: 'Function entry point'
+        required: true
+        type: string
+      region:
+        description: 'Region to deploy this function to (default us-west1)'
+        required: false
+        type: string
+        default: us-west1
+      provider:
+        description: 'Workload Identity Provider'
+        required: true
+        type: string
+        default: 'projects/865303606864/locations/global/workloadIdentityPools/gcftest-github-pool/providers/github-provider'
+      user:
+        description: 'Workload Identity User'
+        required: true
+        type: string
+        default: 'gcftest-github-actions-user@cloudy-labz.iam.gserviceaccount.com'
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      id-token: write
+    steps:
+
+    - name: clone
+      run: |
+        set -euo pipefail
+        git clone ${{ inputs.repo }}
+
+    - id: auth
+      name: Auth GCP
+      uses: google-github-actions/auth@v1  # v1.0.0
+      with:
+        token_format: "access_token"
+        workload_identity_provider: ${{ inputs.provider }}
+        service_account: ${{ inputs.user }}
+
+    - name: sdk
+      uses: google-github-actions/setup-gcloud@v1
+      with:
+        version: '>= 418.0.0'
+
+    - name: deploy
+      run: |
+        set -euo pipefail
+        cd ${{ inputs.context }}
+        gcloud functions deploy ${{ inputs.name }} \
+          --gen2 \
+          --runtime=${{ inputs.runtime }} \
+          --region=${{ inputs.region }} \
+          --source=. \
+          --entry-point=${{ inputs.entry_point }} \
+          --trigger-http

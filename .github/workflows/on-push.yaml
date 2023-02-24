@@ -1,0 +1,25 @@
+name: on_push
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+
+  nodejs18:
+    permissions:
+      contents: write
+    uses: ./.github/workflows/fn-deploy.yaml
+    with:
+      repo: "https://github.com/GoogleCloudPlatform/nodejs-docs-samples.git"
+      context: "nodejs-docs-samples/functions/helloworld/helloworldGet/"
+      name: "daily-nodejs18"
+      runtime: "nodejs18"
+      entry_point: "helloGET"
