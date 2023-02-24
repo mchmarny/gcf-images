@@ -12,9 +12,9 @@ Utility repo to deploy a function for each one of the main 2nd generation runtim
 
 Each one of the samples is deployed with multiple runtimes (e.g. `nodejs18`, `python311`, or `go120`). For complete list of deployed runtimes for each see [daily.yaml](.github/workflows/daily.yaml). 
 
-Images created by GCF resulting from deployment of these functions can be found in Artifact Registry under registry `gcf-artifacts`. The name of the image follows the `daily-<runtime>` convention (e.g. `daily-nodejs18`, `daily-python311`, or `daily-go120`)
+> The [src](./src) contains code samples for older runtimes for which the official GCP samples no longer deploy.
 
-> The [src](src) contains code samples for older runtimes for which the official GCP samples no longer deploy. 
+Images created by GCF resulting from deployment of these functions can be found in Artifact Registry under registry `gcf-artifacts`. The name of the image follows the `daily-<runtime>` convention (e.g. `daily-nodejs18`, `daily-python311`, or `daily-go120`).
 
 ## setup 
 

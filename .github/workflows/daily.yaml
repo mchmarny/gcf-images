@@ -196,7 +196,7 @@ jobs:
       id-token: write
     uses: ./.github/workflows/fn-deploy.yaml
     with:
-      context: "src/dotnet3"
+      context: "./src/dotnet3"
       name: "daily-dotnet3"
       runtime: "dotnet3"
       entry_point: "HelloHttp.Function"

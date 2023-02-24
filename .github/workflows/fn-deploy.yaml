@@ -49,7 +49,7 @@ jobs:
       id-token: write
     steps:
 
-    - if: github.event.inputs.repo
+    - if: inputs.repo
       name: clone
       run: |
         set -euo pipefail
