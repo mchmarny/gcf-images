@@ -29,12 +29,12 @@ on:
         default: us-west1
       provider:
         description: 'Workload Identity Provider'
-        required: true
+        required: false
         type: string
         default: 'projects/865303606864/locations/global/workloadIdentityPools/gcftest-github-pool/providers/github-provider'
       user:
         description: 'Workload Identity User'
-        required: true
+        required: false
         type: string
         default: 'gcftest-github-actions-user@cloudy-labz.iam.gserviceaccount.com'
 
