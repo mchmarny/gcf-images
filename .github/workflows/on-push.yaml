@@ -9,13 +9,15 @@ on:
       - main
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
 
   nodejs18:
     permissions:
       contents: write
+      actions: read
+      id-token: write
     uses: ./.github/workflows/fn-deploy.yaml
     with:
       repo: "https://github.com/GoogleCloudPlatform/nodejs-docs-samples.git"
