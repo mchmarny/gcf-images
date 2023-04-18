@@ -69,7 +69,7 @@ on:
     - cron: '0 */11 * * *'
 ```
 
-To test, simply commit your changes and push upstream. In addition to the above described schedule, the workflow will also execute on each main branch push or PR. 
+To test, simply commit your changes and push upstream. In addition to the above described schedule, the workflow will also execute on the main branch push or PR. 
 
 ## cleanup
 
